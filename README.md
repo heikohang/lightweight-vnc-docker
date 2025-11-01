@@ -18,9 +18,9 @@ The container is configured using environment variables set at runtime.
 
 | Variable | Description | Default |
 | :--- | :--- | :--- |
-| `VNC_PW` | The password to access the VNC session. | `secret` |
-| `VNC_RESOLUTION` | The desktop resolution. | `1280x720` |
-| `VNC_USER` | The non-root user to create. *(Note: This must match the `VNC_USER` build-arg in the Dockerfile if you change it)* | `docker` |
+| `VNC_PW` | The password to access the VNC session. | `mypassword` |
+| `VNC_RESOLUTION` | The desktop resolution. | `1920x1080` |
+| `VNC_USER` | The non-root user to create. *(Note: This must match the `ENV VNC_USER` in the Dockerfile if you change it)* | `user` |
 
 ---
 
@@ -52,21 +52,17 @@ docker run -d \
   -p 5901:5901 \
   -e VNC_PW=mypassword \
   -e VNC_RESOLUTION=1920x1080 \
-  -v ~/my-vnc-home:/home/docker \
+  -v ~/my-vnc-home:/home/user \
   --shm-size=1g \
   --name my-persistent-desktop \
   lightweight-vnc
 ```
 
-or
+Or using the Makefile:
 
-```
-
+```bash
 make run
-```
-
-```
-make-run-persistent
+make run-persistent
 ```
 
 

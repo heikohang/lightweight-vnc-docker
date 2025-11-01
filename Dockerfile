@@ -15,11 +15,9 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# === MOVED THESE LINES UP ===
 # Copy and set up the entrypoint script (while still root)
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-# === END OF MOVE ===
 
 # Set default configuration via environment variables
 # These can be overridden at runtime
