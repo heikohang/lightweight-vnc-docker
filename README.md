@@ -34,6 +34,9 @@ From the directory containing the `Dockerfile`, run:
 docker build -t lightweight-vnc .
 ```
 
+### 2. Run the Image
+
+```
 docker run --rm \
   -p 6901:6901 \
   -p 5901:5901 \
@@ -41,17 +44,30 @@ docker run --rm \
   -e VNC_RESOLUTION=1920x1080 \
   --shm-size=1g \
   lightweight-vnc
+```
 
-docker run --rm \
+```
+docker run -d \
   -p 6901:6901 \
   -p 5901:5901 \
   -e VNC_PW=mypassword \
   -e VNC_RESOLUTION=1920x1080 \
+  -v ~/my-vnc-home:/home/docker \
   --shm-size=1g \
+  --name my-persistent-desktop \
   lightweight-vnc
+```
 
-http://localhost:6901
-vnc://localhost:5901
+or
+
+```
+
+make run
+```
+
+```
+make-run-persistent
+```
 
 
 ### Makefile Quick Reference

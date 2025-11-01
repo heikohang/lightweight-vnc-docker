@@ -23,8 +23,8 @@ RUN chmod +x /entrypoint.sh
 
 # Set default configuration via environment variables
 # These can be overridden at runtime
-ENV VNC_USER=heiko
-ENV VNC_PW=heiko
+ENV VNC_USER=user
+ENV VNC_PW=mypassword
 ENV VNC_RESOLUTION=1920x1080
 
 # Create a non-root user and add to sudo group
